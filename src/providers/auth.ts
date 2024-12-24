@@ -48,6 +48,10 @@ export const authProvider: AuthProvider = {
         };
     },
     // getPermissions: async () => null,
+    onError: async (error) => {
+        console.error(error);
+        return { error };
+    },
     getIdentity: async () => {
         const token = localStorage.getItem(TOKEN_KEY);
         if (token) {
@@ -58,9 +62,5 @@ export const authProvider: AuthProvider = {
             };
         }
         return null;
-    },
-    onError: async (error) => {
-        console.error(error);
-        return { error };
     },
 };
