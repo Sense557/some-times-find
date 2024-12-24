@@ -1,22 +1,26 @@
+import { getNameInitials } from "@/utilities";
 import { Avatar as AntdAvatar } from "antd";
 
 type Props = {
-  name: string;
+  name?: string;
+  style?: React.CSSProperties;
 };
 
 const CustomAvatar = ({ name, style, ...rest }: Props) => {
   return (
     <AntdAvatar
-      alt={"Shakti Meher"}
+      alt={name}
       size="small"
       style={{
         backgroundColor: "#87d068",
         display: "flex",
         alignItems: "center",
         border: "none",
+        ...style,
       }}
+      {...rest}
     >
-      {name}
+      {getNameInitials(name || '')}
     </AntdAvatar>
   );
 };

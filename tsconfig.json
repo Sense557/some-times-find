@@ -20,7 +20,7 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "src/graphql"],
   "references": [
     {
       "path": "./tsconfig.node.json"
