@@ -8,13 +8,14 @@ import { useList } from "@refinedev/core";
 import { DASHBOARD_CALENDAR_UPCOMING_EVENTS_QUERY } from "@/graphql/queries";
 
 const UpcomingEvents = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const { data, isLoading: eventsLoading } = useList({
     resource: "events",
+    meta: {
+      gqlQuery: DASHBOARD_CALENDAR_UPCOMING_EVENTS_QUERY,
+    },
   });
-
-  console.log(JSON.stringify(data));
 
   return (
     <Card
@@ -47,7 +48,7 @@ const UpcomingEvents = () => {
       ) : (
         <List
           itemLayout="horizontal"
-          dataSource={[]}
+          dataSource={data?.data || []}
           renderItem={(item) => {
             const renderDate = getDate(item.startDate, item.endDate);
 
