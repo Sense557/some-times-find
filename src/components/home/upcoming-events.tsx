@@ -8,7 +8,7 @@ import { useList } from "@refinedev/core";
 import { DASHBOARD_CALENDAR_UPCOMING_EVENTS_QUERY } from "@/graphql/queries";
 
 const UpcomingEvents = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { data, isLoading: eventsLoading } = useList({
     resource: "events",
@@ -48,7 +48,7 @@ const UpcomingEvents = () => {
       ) : (
         <List
           itemLayout="horizontal"
-          dataSource={data?.data || []}
+          dataSource={[]}
           renderItem={(item) => {
             const renderDate = getDate(item.startDate, item.endDate);
 
